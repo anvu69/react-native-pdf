@@ -39,6 +39,7 @@ export default class Pdf extends Component {
             // Opaque type returned by require('./test.pdf')
             PropTypes.number,
         ]).isRequired,
+        centerContent: PropsTypes.bool,
         page: PropTypes.number,
         scale: PropTypes.number,
         horizontal: PropTypes.bool,
@@ -72,6 +73,7 @@ export default class Pdf extends Component {
         fitPolicy: 2, //fit both
         horizontal: false,
         page: 1,
+        centerContent: true,
         activityIndicatorProps: {color: '#009900', progressTintColor: '#009900'},
         onLoadProgress: (percent) => {
         },
@@ -354,6 +356,7 @@ export default class Pdf extends Component {
                         ref={component => (this._root = component)}
                         {...this.props}
                         style={[{backgroundColor: '#EEE'}, this.props.style]}
+                        centerContent={this.props.centerContent}
                         path={this.state.path}
                         onChange={this._onChange}
                     />
@@ -364,6 +367,7 @@ export default class Pdf extends Component {
                         {...this.props}
                         style={[{backgroundColor: '#EEE'}, this.props.style]}
                         path={this.state.path}
+                        centerContent={this.props.centerContent}
                         onLoadComplete={this.props.onLoadComplete}
                         onPageChanged={this.props.onPageChanged}
                         onError={this._onError}
